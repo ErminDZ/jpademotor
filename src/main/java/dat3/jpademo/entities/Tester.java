@@ -105,7 +105,68 @@ public class Tester {
         
         for (PersonStyleDTO p: personList){
             System.out.println(p.getName() + ", " + p.getYear() + ", " + p.getSwimStyle());
+        }/*
+        //Find all persons and their fees
+        TypedQuery<PersonStyleDTO> findAllPersonsAndFees = em.createQuery("SELECT name, fees FROM Person", dto.PersonStyleDTO.class);
+        List<PersonStyleDTO> findAllPersonsAndFee = q4.getResultList();
+
+        for (Person p : persons) {
+            System.out.println("Navn: " + p.getName());
+            System.out.println("--Fees:");
+            for (Fee f : p.getFees()) {
+                System.out.println(f.getPerson().getFees());
+            }
         }
+        //Count number of swim styles connected to a person
+            TypedQuery<PersonStyleDTO> numberSwimStylestoAPerson = em.createQuery("SELECT COUNT(stylename) FROM SWIMSTYLE where ", dto.PersonStyleDTO.class);
+        List<PersonStyleDTO> numberSwimStylestoaPerson = q4.getResultList();
+
+        for (Person p : persons) {
+            System.out.println("Navn: " + p.getName());
+            System.out.println("--Fees:");
+            for (Fee f : p.getFees()) {
+                System.out.println(f.getPerson().getFees());
+            }
+        }
+        
+        // Find all persons that has a swimstyle named 'Crawl'
+        TypedQuery<PersonStyleDTO> numberSwimStylestoAPersons = em.createQuery("select SWIMSTYLE.STYLENAME = \"crawl\" from SWIMSTYLE", dto.PersonStyleDTO.class);
+        List<PersonStyleDTO> numberSwimStylestoaPersons = q4.getResultList();
+
+        for (Person p : persons) {
+            System.out.println("Navn: " + p.getName());
+            System.out.println("--Fees:");
+            for (Fee f : p.getFees()) {
+                System.out.println(f.getPerson().getFees());
+            }
+        }
+        
+        // Find the sum of all Fees
+        TypedQuery<PersonStyleDTO> sumOfAllFees = em.createQuery("select sum(FEE.AMOUNT) from FEE", dto.PersonStyleDTO.class);
+        List<PersonStyleDTO> sumOfAllFee = q4.getResultList();
+
+        for (Person p : persons) {
+            System.out.println("Navn: " + p.getName());
+            System.out.println("--Fees:");
+            for (Fee f : p.getFees()) {
+                System.out.println(f.getPerson().getFees());
+            }
+        }
+        
+        
+        // Find the smallest Fee and the highest
+        /*TypedQuery<PersonStyleDTO> smallestAndHighestFee = em.createQuery("select min(AMOUNT),max(AMOUNT) from FEE", dto.PersonStyleDTO.class);
+        List<PersonStyleDTO> smallestAndHighestFees = q4.getResultList();
+
+        for (Person p : persons) {
+            System.out.println("Navn: " + p.getName());
+            System.out.println("--Fees:");
+            for (Fee f : p.getFees()) {
+                System.out.println(f.getPerson().getFees());
+            }
+        }
+*/
+        
         
         populate(em);
         
